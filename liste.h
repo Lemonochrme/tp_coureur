@@ -13,6 +13,8 @@ typedef struct Liste Liste;
 struct Liste
 {
     Element * premier;
+    Element * courant;
+    Element * fin;
     int nombre_elements;
 };
 
@@ -22,6 +24,18 @@ void ajouterCoureurDebut(Liste * liste, Coureur * coureur);
 
 void ajouterCoureurFin(Liste * liste, Coureur * coureur);
 
-void supprimerCoureur(Liste * liste);
+void supprimerCoureur(Liste * liste, Element * aSupprimer);
 
 void afficherListe(Liste * liste);
+
+void afficherCourant(Element * courant);
+
+Coureur * retournerCourant(Element * courant);
+
+void allerDebut(Liste * liste);
+
+void allerFin(Liste * liste);
+
+void avancer(Liste * liste);
+
+void trierListe(Liste * liste);

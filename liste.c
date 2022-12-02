@@ -9,6 +9,9 @@ Liste * initialiserListe()
     element->suivant = NULL;
     liste->premier = element;
 
+    liste->courant = liste->premier;
+    liste->fin = NULL;
+
     return liste;
 }
 
@@ -20,6 +23,7 @@ void ajouterCoureurDebut(Liste * liste, Coureur * coureur)
 
     nouveau->suivant = liste->premier;
     liste->premier = nouveau;
+    liste->courant = nouveau;
 }
 
 void ajouterCoureurFin(Liste * liste, Coureur * coureur)
@@ -37,13 +41,44 @@ void ajouterCoureurFin(Liste * liste, Coureur * coureur)
     }
      
     p->suivant = nouveau;
+    liste->courant = nouveau;
+    liste->fin = nouveau;
 }
 
-void supprimerCoureur(Liste * liste)
+void supprimerCoureur(Liste * liste, Element * aSupprimer)
 {
-    Element * pointeur = liste->premier;
-    liste->premier = liste->premier->suivant;
-    free(pointeur);
+    aSupprimer = liste->courant;
+
+}
+
+void allerDebut(Liste * liste)
+{
+    liste->courant = liste->premier;
+}
+
+void allerFin(Liste * liste)
+{
+    liste->courant = liste->fin;
+}
+
+void avancer(Liste * liste)
+{
+    liste->courant = liste->courant->suivant;
+}
+
+void afficherCourant(Element * courant)
+{
+    Afficher_Coureur(courant->coureur);
+}
+
+Coureur * retournerCourant(Element * courant)
+{
+    return courant->coureur;
+}
+
+void trierListe(Liste * liste)
+{
+    
 }
 
 void afficherListe(Liste * liste)
