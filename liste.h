@@ -11,7 +11,7 @@ typedef struct Element Element;
 struct Element
 {
     Coureur * coureur;
-    Element * suivant;
+    Element * suivant; // Pointeur vers l'élement suivant
 };
 
 /**
@@ -20,9 +20,10 @@ struct Element
 typedef struct Liste Liste;
 struct Liste
 {
-    Element * premier;
-    Element * courant;
-    Element * fin;
+    Element * premier; // Pointeur vers premier élement de la liste
+    Element * courant; // Poiteur vers l'élement courant
+    Element * fin;     // Pointeur vers la fin de la liste
+    int taille;
 };
 
 /**
@@ -43,7 +44,7 @@ void ajouterCoureurFin(Liste * liste, Coureur * coureur);
 /**
  * Fonction permettant de supprimer le coureur contenu dabs l'élement courant
  */
-void supprimerCoureur(Liste * liste, Element * aSupprimer);
+void supprimerCoureur(Liste * liste);
 
 /**
  * Fonction permettant d'afficher l'entièreté de la liste
@@ -79,3 +80,18 @@ void avancer(Liste * liste);
  * Fonction permettant de trier les coureurs en fonction de leur performance
  */
 void trierListe(Liste * liste);
+
+/**
+ * Fonction permettant d'échanger deux élements
+ */
+void swap(Element * a, Element * b);
+
+/**
+ * Fonction renvoyant la taille de la liste
+ */
+int tailleListe(Liste * liste);
+
+/**
+ * Fonction ajoutant le temps de l'étape à tous les participants
+ */
+void actualiserTemps(Liste * liste);
