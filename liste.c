@@ -1,5 +1,6 @@
 #include "liste.h"
 #include <stdio.h>
+#include <string.h>
 
 Liste * initialiserListe()
 {
@@ -170,4 +171,42 @@ void actualiserTemps(Liste * liste)
         }
 
     }
+}
+
+void supprimerEquipesInvalides(Liste * liste)
+{
+    int cptCoureur;
+    char * tempEquipe;
+
+    // Scanner la liste pour trouver moins de 5 occurence d'une équipe
+    // Si moins de 5 occurences : supprimer tous les coureurs de l'équipe
+    Element * curseur = liste->premier;
+    
+    while (curseur->suivant != NULL)
+    {
+        cptCoureur = 0;
+        tempEquipe = curseur->coureur->equipe;
+
+        Element * temp = liste->premier;
+        while (temp->suivant != NULL)
+        {
+            if (strstr(temp->coureur->equipe, tempEquipe) != NULL)
+            {
+                cptCoureur++;
+            }
+            temp = temp->suivant;
+        }
+
+        if (cptCoureur < 5)
+        {
+            printf("%s à moins de 5 coureurs\n", tempEquipe);
+            // Supprimer
+        }
+
+        curseur = curseur->suivant;
+    }
+
+
+
+
 }

@@ -95,3 +95,5 @@ int tailleListe(Liste * liste);
  * Fonction ajoutant le temps de l'étape à tous les participants
  */
 void actualiserTemps(Liste * liste);
+
+void supprimerEquipesInvalides(Liste * liste);
